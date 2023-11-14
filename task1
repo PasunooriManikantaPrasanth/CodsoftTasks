@@ -1,0 +1,39 @@
+import random
+class RPS:
+    player_score=0
+    computer_score=0
+    def players(self):
+        self.player_choice=input("Choose your option:1.Rock,2.Paper,3.Scissors:")
+        options=['Rock','Paper','Scissors']
+        self.computer_choice=random.choice(options)
+        print(self.computer_choice)
+        self.game()
+    def game(self):
+        if self.player_choice==self.computer_choice:
+            print("The both the inputs of computer and the player are same")
+            print("* THE GAME IS TIE *")
+    
+        elif (self.player_choice=='Rock' and self.computer_choice=='Scissors')or(self.player_choice=='Paper' and self.computer_choice=='Rock')or(self.player_choice=='Scissors' and self.computer_choice=='Paper'):
+            self.player_score+=1
+        
+        else:
+            self.computer_score+=1
+            
+        self.score()
+        self.play_again()
+        
+    def score(self):
+        if self.player_score>self.computer_score:
+            print("The score of the player is:",self.player_score)
+            print("* PLAYER WILL BE THE WINNER *")
+        else:
+            print("The score of the computer is:",self.computer_score)
+            print("* COMPUTER IS THE WINNER *")
+    def play_again(self):
+        Rematch=input("To Play Again Enter the option Yes to play or No to quit:")
+        if Rematch=='Yes':
+            self.players()
+        else:
+            self.score()
+o=RPS()
+o.players()
